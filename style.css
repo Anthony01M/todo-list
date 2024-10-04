@@ -1,0 +1,282 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 3s ease;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"], input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background: #28a745;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #218838;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+li {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    position: relative;
+}
+
+li .task-info {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li .task-info p {
+    margin: 0;
+}
+
+li .task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+li .task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+li .task-actions .complete-button {
+    color: #28a745;
+}
+
+li .task-actions .undo-button {
+    color: #ffc107;
+}
+
+li .task-actions .edit-button {
+    color: #ffc107;
+}
+
+li .task-actions .delete-button {
+    color: #dc3545;
+}
+
+li .badge {
+    background: #007bff;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+li .badge.complete {
+    background: #28a745;
+}
+
+li .badge.in-progress {
+    background: #ffc107;
+}
+
+li .badge.denied {
+    background: #dc3545;
+}
+
+.notes {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+li:hover .notes {
+    display: block;
+}
+
+.modal {
+    display: none !important;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal .task-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal .task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.modal .task-actions .complete-button {
+    color: #28a745;
+}
+
+.modal .task-actions .undo-button {
+    color: #ffc107;
+}
+
+.modal .task-actions .edit-button {
+    color: #ffc107;
+}
+
+.modal .task-actions .delete-button {
+    color: #dc3545;
+}
+
+.modal .task-actions .cancel-button {
+    color: #6c757d;
+}
+
+#edit-modal, #delete-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-modal .modal-content, #delete-modal .modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#edit-modal form, #delete-modal .task-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#edit-modal input[type="text"], #edit-modal input[type="date"], #delete-modal button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#edit-modal button, #delete-modal button {
+    padding: 10px;
+    border: none;
+    background: #28a745;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#edit-modal button:hover, #delete-modal button:hover {
+    background: #218838;
+}
